@@ -6,8 +6,14 @@ def main():
     print(calculate(*components))
 
 
-def get_components(text)-> []:
-       
+def get_components(text: str)-> []:
+    '''
+    :param n: Equation that is provided by user
+    :type n: str
+    :raise ValueError: If equation is not valid
+    :return: List of 3 components of equation:first element, operator, second element
+    :rtype: list
+    '''
     components = text.split(" ")
        
     if len(components) != 3:
@@ -28,21 +34,31 @@ def get_components(text)-> []:
     return [first_fl, operator, second_fl] 
 
 def calculate(first:float, operator: Literal['+', '-', '*', '/'], second:float) -> float:
-
-
-      match operator:
-        case "+":
-            return first + second
-        case "-":
-            return first - second
-        case "*":
-            return first * second
-        case "/":
-            if second == 0: 
-              raise ZeroDivisionError
-            return first / second
-        case _:
-            raise ValueError
+    '''
+    :param first: First component of equation
+    :type first: float
+    :param operator: First component of equation
+    :type operator: Allowed are 4 characters +, -, *, /
+    :param second: Second component of equation
+    :type second: float
+    :raise ValueError: If operator is not recognized
+    :raise ZeroDivisionError: If operator i division and second component is zero
+    :return: Result of equation
+    :rtype: float
+    '''
+    match operator:
+      case "+":
+          return first + second
+      case "-":
+          return first - second
+      case "*":
+          return first * second
+      case "/":
+          if second == 0: 
+            raise ZeroDivisionError
+          return first / second
+      case _:
+          raise ValueError
 
 
 if __name__ == "__main__":
