@@ -1,4 +1,5 @@
 from typing import Literal
+from typing import List, Tuple
 
 
 def main():
@@ -6,13 +7,15 @@ def main():
     print(calculate(*components))
 
 
-def get_components(text: str)-> []:
+def get_components(text: str)-> List[float | str]:
     '''
+    Parse equation provided by user and validate it's components
+
     :param n: Equation that is provided by user
     :type n: str
     :raise ValueError: If equation is not valid
     :return: List of 3 components of equation:first element, operator, second element
-    :rtype: list
+    :rtype: list[float, str, float]
     '''
     components = text.split(" ")
        
@@ -35,6 +38,8 @@ def get_components(text: str)-> []:
 
 def calculate(first:float, operator: Literal['+', '-', '*', '/'], second:float) -> float:
     '''
+    Execute calculation of provided values
+
     :param first: First component of equation
     :type first: float
     :param operator: First component of equation
